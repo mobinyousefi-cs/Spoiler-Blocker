@@ -1,0 +1,85 @@
+<!--
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+=================================================================================================================
+Project: Spoiler Blocker Extension
+File: popup.html
+Author: Mobin Yousefi (GitHub: github.com/mobinyousefi-cs)
+Created: 2025-11-03
+Updated: 2025-11-03
+License: MIT License (see LICENSE file for details)
+=
+
+Description:
+Popup UI for quick toggles, keyword management, and snooze control.
+
+Usage:
+- Open from browser toolbar.
+
+Notes:
+- Minimal, clean styling via embedded styles + shared styles.css.
+=================================================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spoiler Blocker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; width: 320px; padding: 12px; }
+    .row { display: flex; align-items: center; justify-content: space-between; margin: 8px 0; }
+    .keywords { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .tag { background: #f0f2f5; padding: 4px 8px; border-radius: 12px; font-size: 12px; display: inline-flex; align-items:center; gap:6px; }
+    .tag button { border: none; background: transparent; cursor: pointer; font-size: 12px; }
+    input[type="text"] { width: 100%; padding: 6px 8px; border-radius: 8px; border: 1px solid #d9d9d9; }
+    .btn { padding: 6px 10px; border-radius: 8px; border: 1px solid #d9d9d9; cursor: pointer; background: #fff; }
+    .btn.primary { background: #111827; color: #fff; border-color: #111827; }
+    small.muted { color: #6b7280; }
+  </style>
+</head>
+<body>
+  <header class="row">
+    <strong>Spoiler Blocker</strong>
+    <a href="options.html" target="_blank" class="btn">Options</a>
+  </header>
+
+  <div class="row">
+    <label>
+      <input type="checkbox" id="toggle-enabled"> Enabled
+    </label>
+    <button id="snooze-30" class="btn">Snooze 30m</button>
+  </div>
+
+  <div class="row">
+    <label>Mode</label>
+    <select id="mode">
+      <option value="blur">Blur</option>
+      <option value="blackout">Blackout</option>
+      <option value="collapse">Collapse</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label>Intensity</label>
+    <input type="range" id="intensity" min="2" max="24" step="1">
+  </div>
+
+  <section>
+    <label for="kw">Add keyword</label>
+    <input type="text" id="kw" placeholder="e.g., Dune, Stranger Things" />
+    <div style="margin-top:8px; display:flex; gap:6px;">
+      <button id="add-kw" class="btn primary">Add</button>
+      <button id="clear-kw" class="btn">Clear all</button>
+    </div>
+    <div id="kw-list" class="keywords"></div>
+  </section>
+
+  <footer style="margin-top:12px;">
+    <small class="muted">Keywords sync with your Chrome profile. No external services.</small>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

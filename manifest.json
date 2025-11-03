@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Spoiler Blocker",
+  "version": "1.0.0",
+  "description": "Blocks or blurs potential spoilers on webpages based on your keywords.",
+  "action": {
+    "default_title": "Spoiler Blocker",
+    "default_popup": "src/popup.html"
+  },
+  "icons": {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "options_page": "src/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["src/contentScript.js"],
+      "css": ["src/styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

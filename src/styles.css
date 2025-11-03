@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+/* -*- coding: utf-8 -*- */
+/*
+=================================================================================================================
+Project: Spoiler Blocker Extension
+File: styles.css
+Author: Mobin Yousefi (GitHub: github.com/mobinyousefi-cs)
+Created: 2025-11-03
+Updated: 2025-11-03
+License: MIT License (see LICENSE file for details)
+=
+
+Description:
+Shared style tokens and utility classes for popup/options pages and applied masking.
+
+Usage:
+- Included by popup.html and options.html. Content pages receive inline styles via content script.
+
+Notes:
+- Keep minimal to avoid style collisions.
+=================================================================================================================
+*/
+
+:root {
+  --sb-radius: 12px;
+}
+
+.sb-masked { position: relative; }
+.sb-overlay { user-select: none; }
+
+/* Buttons */
+button { font: inherit; }
+button:focus { outline: 2px solid #11182733; outline-offset: 2px; }
+
+/* Inputs */
+input, select { font: inherit; }

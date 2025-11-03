@@ -1,0 +1,83 @@
+<!--
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+=================================================================================================================
+Project: Spoiler Blocker Extension
+File: options.html
+Author: Mobin Yousefi (GitHub: github.com/mobinyousefi-cs)
+Created: 2025-11-03
+Updated: 2025-11-03
+License: MIT License (see LICENSE file for details)
+=
+
+Description:
+Options page with advanced settings: partial matching, debug highlighting, and per‑site rules.
+
+Usage:
+- Open from chrome://extensions → Details → Extension options or via popup link.
+
+Notes:
+- Uses styles.css and options.js for functionality.
+=================================================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spoiler Blocker – Options</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 880px; margin: 24px auto; padding: 0 16px; }
+    fieldset { border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; }
+    legend { padding: 0 6px; font-weight: 600; color: #111827; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 12px; }
+    .muted { color: #6b7280; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid #eee; padding: 8px; text-align: left; }
+    input[type="text"] { width: 100%; padding: 8px; border: 1px solid #d9d9d9; border-radius: 8px; }
+    .btn { padding: 6px 10px; border-radius: 8px; border: 1px solid #d9d9d9; cursor: pointer; background: #fff; }
+    .btn.primary { background: #111827; color: white; border-color: #111827; }
+  </style>
+</head>
+<body>
+  <h1>Options</h1>
+
+  <fieldset>
+    <legend>Matching</legend>
+    <label><input type="checkbox" id="partial"> Enable partial/fuzzy matching</label>
+    <p class="muted">When enabled, matches may trigger inside longer words. Useful for variants and misspellings.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Debugging</legend>
+    <label><input type="checkbox" id="highlightDebug"> Highlight matched elements (red dashed outline)</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Per‑site Rules</legend>
+    <div class="grid">
+      <div>
+        <label>Hostname</label>
+        <input type="text" id="host" placeholder="example.com" />
+      </div>
+      <div style="display:flex;align-items:end;gap:8px;">
+        <button id="addHost" class="btn primary">Add/Enable</button>
+        <button id="disableHost" class="btn">Disable</button>
+        <button id="removeHost" class="btn">Remove</button>
+      </div>
+    </div>
+
+    <table id="rulesTable">
+      <thead><tr><th>Host</th><th>Status</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </fieldset>
+
+  <footer>
+    <p class="muted">Settings sync with your Chrome profile.</p>
+  </footer>
+
+  <script src="options.js"></script>
+</body>
+</html>
